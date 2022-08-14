@@ -13,8 +13,8 @@ jobs:
       PLANTUML_VERSION: github.event.client_payload.PLANTUML_VERSION
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "Python version ${{ PYTHON_VERSION }}"
-      - run: echo "Poetry version ${{ POETRY_VERSION }}"
-      - run: echo "mkdocs version ${{ MKDOCS_VERSION }}"
-      - run: echo "mkdocs plantuml version ${{ MKDOCS_BUILD_PLANTUML_VERSION }}"
-      - run: echo "Plantuml version ${{ PLANTUML_VERSION }}"
+      - run: echo "Python version ${PYTHON_VERSION}"
+      - run: echo "Poetry version ${POETRY_VERSION}"
+      - run: echo "mkdocs version ${MKDOCS_VERSION}"
+      - run: echo "mkdocs plantuml version ${MKDOCS_BUILD_PLANTUML_VERSION}"
+      - run: echo "Plantuml version ${PLANTUML_VERSION}"
