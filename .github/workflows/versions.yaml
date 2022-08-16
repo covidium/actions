@@ -2,7 +2,7 @@ name: Versions
 
 on:
   repository_dispatch:
-    types: [on-demand-docker-build]
+    types: [update-versions]
 
 jobs:
   update-versions:
