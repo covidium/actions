@@ -21,10 +21,14 @@ jobs:
           yq -i '.latest.plantuml="${{ github.event.client_payload.PLANTUML_VERSION }}"' versions.yaml
       - name: Git push back
         run: |
-          git config --global user.name "Versions"
-          git config --global user.email "versions@github.actions"
-          git pull
-          git add versions.yaml
-          git commit -m "Update versions.yaml file"
-          git push
+          if [[ -n $(git status -s) ]] ; then
+            git config --global user.name "Versions"
+            git config --global user.email "versions@github.actions"
+            git pull
+            git add versions.yaml
+            git commit -m "Update versions.yaml file"
+            git push
+          else
+            echo "Nothing changed"
+          fi
  
