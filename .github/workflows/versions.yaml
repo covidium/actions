@@ -14,12 +14,13 @@ jobs:
           token: ${{ secrets.WRITE_BACK_TOKEN }}
       - name: Update versions
         uses: mikefarah/yq@master
-        run: |
-          yq -i '.latest.python="${{ github.event.client_payload.PYTHON_VERSION }}"' versions.yaml
-          yq -i '.latest.poetry="${{ github.event.client_payload.POETRY_VERSION }}"' versions.yaml
-          yq -i '.latest.mkdocs="${{ github.event.client_payload.MKDOCS_VERSION }}"' versions.yaml
-          yq -i '.latest.mkdocs_plantuml="${{ github.event.client_payload.MKDOCS_BUILD_PLANTUML_VERSION }}"' versions.yaml
-          yq -i '.latest.plantuml="${{ github.event.client_payload.PLANTUML_VERSION }}"' versions.yaml
+        with:
+          cmd: |
+            yq -i '.latest.python="${{ github.event.client_payload.PYTHON_VERSION }}"' versions.yaml
+            yq -i '.latest.poetry="${{ github.event.client_payload.POETRY_VERSION }}"' versions.yaml
+            yq -i '.latest.mkdocs="${{ github.event.client_payload.MKDOCS_VERSION }}"' versions.yaml
+            yq -i '.latest.mkdocs_plantuml="${{ github.event.client_payload.MKDOCS_BUILD_PLANTUML_VERSION }}"' versions.yaml
+            yq -i '.latest.plantuml="${{ github.event.client_payload.PLANTUML_VERSION }}"' versions.yaml
       - name: Git push back
         run: |
           git config --global user.name "Versions"
