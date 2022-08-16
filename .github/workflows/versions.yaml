@@ -8,13 +8,12 @@ jobs:
   update-versions:
     runs-on: ubuntu-latest
     steps:
-      - name: Install YQ
-        run: apt-get install yq -y
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.WRITE_BACK_TOKEN }}
       - name: Update versions
+        uses: mikefarah/yq@master
         run: |
           yq -i '.latest.python="${{ github.event.client_payload.PYTHON_VERSION }}"' versions.yaml
           yq -i '.latest.poetry="${{ github.event.client_payload.POETRY_VERSION }}"' versions.yaml
