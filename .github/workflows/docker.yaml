@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Cool new versions
-        run: cat versions.yaml | yq .
+        run: cat versions.yaml | yq .latest.python
       # - name: Set up Docker Buildx
       #   id: buildx
       #   uses: docker/setup-buildx-action@v2
